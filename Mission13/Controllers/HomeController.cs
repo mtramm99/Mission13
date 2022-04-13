@@ -35,14 +35,14 @@ namespace Mission13.Controllers
 
 
         [HttpGet]
-        public IActionResult CreateBowler()
+        public IActionResult AddBowler()
         {
             ViewBag.Teams = _repo.Teams.ToList();
             return View();
         }
 
         [HttpPost]
-        public IActionResult CreateBowler(Bowler b)
+        public IActionResult AddBowler(Bowler b)
         {
 
             if (ModelState.IsValid)
@@ -67,7 +67,7 @@ namespace Mission13.Controllers
 
             ViewBag.Teams = _repo.Teams.ToList();
             var bowler = _repo.Bowlers.Single(x => x.BowlerID == bowlerid);
-            return View("CreateBowler", bowler);
+            return View("AddBowler", bowler);
         }
 
         [HttpPost]

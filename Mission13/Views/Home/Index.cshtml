@@ -4,11 +4,47 @@
 
 @model List<Bowler>
 
-<h1>Bowlers</h1>
+<div class="text-center">
+    <h1 class="display-4">Bowlers</h1>
+</div>
 
-<ul>
+<table class="table table-bordered table-striped">
+    <thead class="font-wieght-bold">
+        <tr>
+            <th>First Name</th>
+            <th>Middle Initial</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zipcode</th>
+            <th>Phone Number</th>
+            <th>Team Name</th>
+        </tr>
+    </thead>
+
+
     @foreach (var b in Model)
-        {
-            <li>@b.BowlerID - @b.BowlerFirstName</li>
-        }
-</ul>
+    {
+        <tr>
+            <td>@b.BowlerFirstName</td>
+            <td>@b.BowlerMiddleInit</td>
+            <td>@b.BowlerLastName</td>
+            <td>@b.BowlerAddress</td>
+            <td>@b.BowlerCity</td>
+            <td>@b.BowlerState</td>
+            <td>@b.BowlerZip</td>
+            <td>@b.BowlerPhoneNumber</td>
+            <td>@b.Team.TeamName</td>
+
+            @*each bowler has a button to edit or delete, with an add button at the bottom of the page*@
+
+            <td><a asp-controller="Home" asp-action="Edit" asp-route-bowlerid="@b.BowlerID">Edit</a></td>
+            <td><a asp-controller="Home" asp-action="Delete" asp-route-bowlerid="@b.BowlerID">Delete</a></td>
+        </tr>
+    }
+    <tr>
+        <td><a asp-controller="Home" asp-action="AddBowler" class="btn btn-primary">Add New Bowler</a></td>
+    </tr>
+</table>
+

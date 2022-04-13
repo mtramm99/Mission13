@@ -1,16 +1,16 @@
 ﻿@{
-    ViewData["Title"] = "Add Bowler";
-
+    ViewData["Title"] = "Bowler";
 }
 
 @model Mission13.Models.Bowler
+
 
 <div>
     <h1>Please include all neccessary information</h1>
 </div>
 <div>
     <form method="post">
-        @*<input type="hidden" asp-for="BowlerID" value="max + 1" />*@
+        
         <label asp-for="BowlerFirstName">First Name:</label>
         <input asp-for="BowlerFirstName" />
         <br />
