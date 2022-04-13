@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mission13.Models;
 using System;
@@ -11,16 +12,18 @@ namespace Mission13.Controllers
 {
     public class HomeController : Controller
     {
-        private BowlersDbContext _context { get; set; }
+        private IBowlersRepository _repo { get; set; }
 
-        public HomeController(BowlersDbContext temp)
+        public HomeController(IBowlersRepository temp)
         {
-            _context = temp;
+            _repo = temp;
         }
 
         public IActionResult Index()
         {
-            var blah = _context.Bowlers.ToList();
+            var blah = _repo.Bowlers
+                .ToList();
+
             return View(blah);
         }
     }
